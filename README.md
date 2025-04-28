@@ -118,4 +118,4 @@ The action is triggered on:
 This README provides a comprehensive overview of your AI Code Review system.
 
 ## Notes
- GitHub integration with Amazon Q is currently in development. Once this native integration is released, custom solutions for connecting GitHub with Amazon Q will become redundant.
+ GitHub integration with Amazon Q is currently in development. Once this native integration is released, this custom solutions for connecting GitHub with bedrock will become redundant.
