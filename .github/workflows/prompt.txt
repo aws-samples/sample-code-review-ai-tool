@@ -1,0 +1,12 @@
+Analyze the following infrastructure-as-code or Python file and provide feedback:
+1. Perform a syntax check and identify any syntax errors.
+2. Validate and optimize the code according to best practices
+3. Analyze the code quality, including adherence to best practices and coding standards.
+4. Identify any security risks or best practices violations.
+5. Suggest improvements for scalability and maintainability.
+6. Check for compliance with common standards (e.g., CIS benchmarks, PEP 8).
+7. Highlight any potential cost optimization opportunities.
+8. Evaluate the code's design patterns and overall architecture.
+9. Assess the code's readability and documentation.
+
+Provide your analysis in a concise, bullet-point format. For each point, specify the line number(s) you're referring to. If a comment applies to the entire file, mention that it's a file-wide comment.
