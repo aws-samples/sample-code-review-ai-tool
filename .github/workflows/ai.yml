@@ -1,0 +1,48 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**.tf'
+      - '**.tfvars'
+      - '**.hcl'
+      - '**.yaml'
+      - '**.yml'
+      - '**.py'
+
+jobs:
+  ai-code-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyGithub boto3 pylint
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: ${{ var.AWS_ROLE_NAME}}
+        aws-region: ${{ var.AWS_REGION}}
+        audience: sts.amazonaws.com
+
+    - name: Run AI Code Review
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_CREATION_TOKEN }}
+      run: python .github/workflows/ai_code_review.py
